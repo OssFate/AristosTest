@@ -11,38 +11,38 @@
 
 <form method="post">
     <div class="row">
-        <div class="form-control mb-1 col-sm-4">
-            <label class="form-label">Aeropuerto de Origen</label>
+        <div class="mb-1 col-sm-4">
+            <label class="form-label fw-bold">Aeropuerto de Origen</label>
             <select class="form-select" asp-for="Reservation.Origin.Id" asp-items="Model.AirPortSelect" required>
                 <option value="">Seleccione...</option>
             </select>
         </div>
-        <div class="form-control mb-1 col-sm-4">
-            <label class="form-label">Horario de Salida</label>
+        <div class="mb-1 col-sm-4">
+            <label class="form-label fw-bold">Horario de Salida</label>
             <input class="form-control" asp-for="Reservation.DepartureTime" required />
         </div>
-        <div class="form-control mb-1 col-sm-4">
-            <label class="form-label">Aeropuerto de Llegada</label>
+        <div class="mb-1 col-sm-4">
+            <label class="form-label fw-bold">Aeropuerto de Llegada</label>
             <select class="form-select" asp-for="Reservation.Destination.Id" asp-items="Model.AirPortSelect" required>
                 <option value="">Seleccione...</option>
             </select>
         </div>
-        <div class="form-control mb-1 col-sm-4">
-            <label class="form-label">Horario de Llegada</label>
+        <div class="mb-1 col-sm-4">
+            <label class="form-label fw-bold">Horario de Llegada</label>
             <input class="form-control" asp-for="Reservation.ArrivalTime" required />
         </div>
-        <div class="form-control mb-1 col-sm-4">
-            <label class="form-label">Aerolínea</label>
+        <div class="mb-1 col-sm-4">
+            <label class="form-label fw-bold">Aerolínea</label>
             <select class="form-select" asp-for="Reservation.AirLine.Id" asp-items="Model.AirLineSelect" required>
                 <option value="">Seleccione...</option>
             </select>
         </div>
-        <div class="form-control mb-1 col-sm-4">
-            <label class="form-label">Número de vuelo</label>
+        <div class="mb-1 col-sm-4">
+            <label class="form-label fw-bold">Número de vuelo</label>
             <input class="form-control" asp-for="Reservation.FlyNumber" required />
         </div>
-        <div class="form-control mb-1 col-sm-4">
-            <label class="form-label">Precio tipo de pasajero</label>
+        <div class="mb-1 col-sm-4">
+            <label class="form-label fw-bold">Precio tipo de pasajero</label>
             <select class="form-select" asp-for="Reservation.PassengerType.Id" asp-items="Model.PassengerTypeSelect" required>
                 <option value="">Seleccione...</option>
             </select>

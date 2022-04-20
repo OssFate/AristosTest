@@ -51,15 +51,19 @@ public class AirportService : IAirportService
     public async Task<List<Reservation>> GetListReservationByFilter(FilterRequest filter)
     {
         var result = await _airportContext.Reservations
-                                            .Where(r => (!filter.Id.HasValue || r.Id == filter.Id.Value) &&
-                                            (!filter.OriginId.HasValue || r.Origin.Id == filter.OriginId) &&
-                                            (!filter.DestinationId.HasValue || r.Destination.Id == filter.DestinationId) &&
-                                            (!filter.DepartureDate.HasValue || r.DepartureTime.Date == filter.DepartureDate.Value.Date) &&
-                                            (!filter.ArrivalDate.HasValue || r.ArrivalTime.Date == filter.ArrivalDate.Value.Date) &&
-                                            (!filter.AirLineId.HasValue || r.AirLine.Id == filter.AirLineId) &&
-                                            (filter.FlyNumber == null || r.FlyNumber == filter.FlyNumber) &&
-                                            (filter.PassengerTypeId.HasValue || r.PassengerType.Id == filter.PassengerTypeId))
-                                            .ToListAsync();
+            .Include(i => i.Origin)
+            .Include(i => i.Destination)
+            .Include(i => i.AirLine)
+            .Include(i => i.PassengerType)
+            .Where(r => (!filter.Id.HasValue || r.Id == filter.Id.Value) &&
+                        (!filter.OriginId.HasValue || r.Origin.Id == filter.OriginId) &&
+                        (!filter.DestinationId.HasValue || r.Destination.Id == filter.DestinationId) &&
+                        (!filter.DepartureDate.HasValue || r.DepartureTime.Date == filter.DepartureDate.Value.Date) &&
+                        (!filter.ArrivalDate.HasValue || r.ArrivalTime.Date == filter.ArrivalDate.Value.Date) &&
+                        (!filter.AirLineId.HasValue || r.AirLine.Id == filter.AirLineId) &&
+                        (filter.FlyNumber == null || r.FlyNumber == filter.FlyNumber) &&
+                        (!filter.PassengerTypeId.HasValue || r.PassengerType.Id == filter.PassengerTypeId))
+            .ToListAsync();
 
         return result;
     }

@@ -1,4 +1,48 @@
 ﻿@page
 @model AristosTest.Web.Pages.Reservations.ReservationByIdModel
 @{
+    ViewData["Title"] = "Buscar Reservacion por Id";
+}
+
+<form method="post">
+    <div class="mb-2 col-sm-4">
+        <label class="form-label fw-bold">Id de Reserva</label>
+        <input class="form-control" type="number" asp-for="ReservationId" required/>
+    </div>
+    <button class="btn btn-primary" type="submit">Buscar...</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <label class="alert alert-warning badge mt-3">@Model.Message</label>
+}
+
+@if (Model.Reservation is {Id: > 0 })
+{
+    <div class="form-control mt-3">
+        <label class="fw-bold">Detalles Reserva @Model.Reservation.Id </label>
+        <div class="row">
+            <div class="col-sm-4">
+                <label class="fw-bold">Aeropuerto Origen: <span class="fw-normal">@Model.Reservation.Origin.Name</span></label>
+            </div>
+            <div class="col-sm-4">
+                <label class="fw-bold">Horario de Salida: <span class="fw-normal">@Model.Reservation.DepartureTime</span></label>
+            </div>
+            <div class="col-sm-4">
+                <label class="fw-bold">Aeropuerto de Llegada: <span class="fw-normal">@Model.Reservation.Destination.Name</span></label>
+            </div>
+            <div class="col-sm-4">
+                <label class="fw-bold">Horario de Llegada: <span class="fw-normal">@Model.Reservation.ArrivalTime</span></label>
+            </div>
+            <div class="col-sm-4">
+                <label class="fw-bold">Aerolínea: <span class="fw-normal">@Model.Reservation.AirLine.Name</span></label>
+            </div>
+            <div class="col-sm-4">
+                <label class="fw-bold">Número de vuelo: <span class="fw-normal">@Model.Reservation.FlyNumber</span></label>
+            </div>
+            <div class="col-sm-4">
+                <label class="fw-bold">Precio tipo de pasajero: <span class="fw-normal">@Model.Reservation.PassengerType.SelectText</span></label>
+            </div>
+        </div>
+    </div>
 }
