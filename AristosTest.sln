@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AristosTest", "AristosTest\AristosTest.csproj", "{0087C7A4-A647-481C-9D8F-FB06EF0440DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AristosTest.Web", "AristosTest\AristosTest.Web.csproj", "{0087C7A4-A647-481C-9D8F-FB06EF0440DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AristosTest.Api", "AristosTest.Api\AristosTest.Api.csproj", "{346ECE86-D25F-4F53-A61C-3A8BE605B212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AristosTest.Shared", "AristosTest.Shared\AristosTest.Shared.csproj", "{8D15B7E7-8579-4C55-A621-3EE3ECB96956}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{0087C7A4-A647-481C-9D8F-FB06EF0440DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0087C7A4-A647-481C-9D8F-FB06EF0440DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0087C7A4-A647-481C-9D8F-FB06EF0440DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{346ECE86-D25F-4F53-A61C-3A8BE605B212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346ECE86-D25F-4F53-A61C-3A8BE605B212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346ECE86-D25F-4F53-A61C-3A8BE605B212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346ECE86-D25F-4F53-A61C-3A8BE605B212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D15B7E7-8579-4C55-A621-3EE3ECB96956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D15B7E7-8579-4C55-A621-3EE3ECB96956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D15B7E7-8579-4C55-A621-3EE3ECB96956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D15B7E7-8579-4C55-A621-3EE3ECB96956}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
