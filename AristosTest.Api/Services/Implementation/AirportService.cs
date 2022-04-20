@@ -19,6 +19,11 @@ public class AirportService : IAirportService
     {
         reservation.Id = 0;
 
+        reservation.Origin = await _airportContext.Airports.Where(a => a.Id == reservation.Origin.Id).FirstAsync();
+        reservation.Destination = await _airportContext.Airports.Where(a => a.Id == reservation.Destination.Id).FirstAsync();
+        reservation.AirLine = await _airportContext.AirLines.Where(a => a.Id == reservation.AirLine.Id).FirstAsync();
+        reservation.PassengerType = await _airportContext.PassengerTypes.Where(a => a.Id == reservation.PassengerType.Id).FirstAsync();
+
         await _airportContext.Reservations.AddAsync(reservation);
         await _airportContext.SaveChangesAsync();
 
