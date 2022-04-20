@@ -1,5 +1,86 @@
 ﻿@page
 @model AristosTest.Web.Pages.ReservationListModel
 @{
-    ViewData["Title"] = "Lista Reservaciones";
+    ViewData["Title"] = "Lista Reservas";
 }
+
+<div class="d-flex">
+    <form method="post" asp-page-handler="ToggleFilter" ><button type="submit" class="btn btn-primary mr-2">Show Filter</button></form>
+    <form method="post" asp-page-handler="ClearFilter"><button type="submit" class="btn btn-warning">Clear Filter</button></form>
+</div>
+
+@if (Model.ShowFilter)
+{
+    <form method="post">
+        <div class="row">
+            <div class="mb-1 col-sm-4">
+                <label class="form-label fw-bold">Aeropuerto de Origen</label>
+                <select class="form-select" asp-for="Filter.OriginId" asp-items="Model.AirPortSelect">
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+            <div class="mb-1 col-sm-4">
+                <label class="form-label fw-bold">Horario de Salida</label>
+                <input class="form-control" asp-for="Filter.DepartureDate" />
+            </div>
+            <div class="mb-1 col-sm-4">
+                <label class="form-label fw-bold">Aeropuerto de Llegada</label>
+                <select class="form-select" asp-for="Filter.DestinationId" asp-items="Model.AirPortSelect">
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+            <div class="mb-1 col-sm-4">
+                <label class="form-label fw-bold">Horario de Llegada</label>
+                <input class="form-control" asp-for="Filter.ArrivalDate" />
+            </div>
+            <div class="mb-1 col-sm-4">
+                <label class="form-label fw-bold">Aerolínea</label>
+                <select class="form-select" asp-for="Filter.AirLineId" asp-items="Model.AirLineSelect">
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+            <div class="mb-1 col-sm-4">
+                <label class="form-label fw-bold">Número de vuelo</label>
+                <input class="form-control" asp-for="Filter.FlyNumber" />
+            </div>
+            <div class="mb-1 col-sm-4">
+                <label class="form-label fw-bold">Precio tipo de pasajero</label>
+                <select class="form-select" asp-for="Filter.PassengerTypeId" asp-items="Model.PassengerTypeSelect">
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Filtrar</button>
+    </form>
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Aeropuerto de Origen</th>
+        <th>Horario de Salida</th>
+        <th>Aeropuerto de Llegada</th>
+        <th>Horario de Llegada</th>
+        <th>Aerolínea</th>
+        <th>Número de vuelo</th>
+        <th>Precio tipo de pasajero</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var reserve in Model.ReserveList)
+    {
+        <tr>
+            <td>@reserve.Id</td>
+            <td>@reserve.Origin.Name</td>
+            <td>@reserve.DepartureTime</td>
+            <td>@reserve.Destination.Name</td>
+            <td>@reserve.ArrivalTime</td>
+            <td>@reserve.AirLine.Name</td>
+            <td>@reserve.FlyNumber</td>
+            <td>@reserve.PassengerType.SelectText</td>
+        </tr>
+    }
+    </tbody>
+</table>
